@@ -57,4 +57,4 @@ MANIFEST.MF
 *.log
 settings.json
 
-config.properties
+*config.properties
