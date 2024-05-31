@@ -3,10 +3,7 @@ package com.kms.practice.member.controller;
 import com.kms.practice.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("member")
@@ -23,6 +20,13 @@ public class MemberController {
     @GetMapping("signup")
     public String signup() {
         return "member/signup";
+    }
+
+    @GetMapping("idCheck")
+    @ResponseBody
+    public int idCheck(String memberId) {
+
+        return memberService.idCheck(memberId);
     }
 
 //    @PostMapping("signup")

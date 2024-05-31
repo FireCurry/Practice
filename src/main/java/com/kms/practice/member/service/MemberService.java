@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MemberService {
 
-//    public void signup(Member member) {
-//
-//    }
+    public int idCheck(String memberId) {
+        return 0;
+    }
+
 }

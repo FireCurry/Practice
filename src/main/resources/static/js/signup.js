@@ -10,7 +10,7 @@ let checkObj = {
 };
 
 memberId.addEventListener("input", e=>{
-    fetch(`member/signup?memberId=${memberId.value}`)
+    fetch(`/member/signup?memberId=${memberId.value}`)
         .then(resp=>resp.text())
         .then(result=>{
             if(result>0){
