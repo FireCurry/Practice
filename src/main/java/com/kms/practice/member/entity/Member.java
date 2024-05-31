@@ -10,5 +10,8 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long memberId;
 
+    @Column(unique = true, nullable = false)
+    private String memberName;
+
 
 }
