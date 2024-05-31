@@ -2,11 +2,13 @@ package com.kms.practice.member.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "member")
+@NoArgsConstructor
 public class MemberEntity {
 
     @Id
@@ -32,6 +34,5 @@ public class MemberEntity {
         this.deleteYn = deleteYn;
 
     }
-
 
 }
