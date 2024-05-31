@@ -25,10 +25,10 @@ public class MemberController {
         return "member/signup";
     }
 
-    @PostMapping("signup")
-    public String signup(@ModelAttribute Member member) {
-        memberService.signup(member);
-        return "redirect:/member/signin";
-    }
+//    @PostMapping("signup")
+//    public String signup(@ModelAttribute Member member) {
+//        memberService.signup(member);
+//        return "redirect:/member/signin";
+//    }
 
 }
