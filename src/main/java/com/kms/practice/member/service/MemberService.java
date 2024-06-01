@@ -4,7 +4,7 @@ import com.kms.practice.member.dto.MemberDTO;
 
 public interface MemberService {
 
-    int idCheck(String memberId);
+    long idCheck(String memberId);
 
     int signup(MemberDTO memberDTO);
 }

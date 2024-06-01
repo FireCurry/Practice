@@ -26,16 +26,20 @@ public class MemberController {
 
     @PostMapping("signup")
     public String signup(@ModelAttribute MemberDTO memberDTO, RedirectAttributes ra){
-
+        String message = null;
         int result = memberService.signup(memberDTO);
-
-        ra.addFlashAttribute("message", "회원가입 성공");
-        return "redirect:/";
+        if(result >0){
+            message = "회원가입 성공";
+        } else {
+            message = "회원가입 실패";
+        }
+        ra.addFlashAttribute("message", message);
+        return "redirect:signin";
     }
 
     @GetMapping("idCheck")
     @ResponseBody
-    public int idCheck(String memberId) {
+    public long idCheck(String memberId) {
         return memberService.idCheck(memberId);
     }
 

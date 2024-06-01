@@ -11,18 +11,18 @@
 <body class="d-flex align-items-center justify-content-center py-4 bg-body-tertiary">
 
 <main class="form-signup w-50 m-auto h-50">
-    <form method="post" action="member/signup" id="signup-form">
+    <form method="post" action="signup" id="signup-form">
         <h1 class="h3 mb-3 fw-normal" style="user-select: none">Practice</h1>
 
         <div class="input-group mb-3">
             <span class="input-group-text w-25 text-center fw-bold">아이디</span>
-            <input type="text" class="form-control" maxlength="20" id="member-id" placeholder="아이디를 입력해주세요">
-            <span class="input-group-text text-center fw-bold" id="member-id-sign">?</span>
+            <input name="memberId" type="text" class="form-control" maxlength="20" id="member-id" placeholder="아이디를 입력해주세요">
+            <button class="btn-primary btn text-center fw-bold" id="member-id-check" type="button">중복검사</button>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text w-25 fw-bold">비밀번호</span>
-            <input type="password" class="form-control" maxlength="50" id="member-pw" placeholder="비밀번호를 입력해주세요">
-            <span class="input-group-text text-center fw-bold" id="member-pw-sign">?</span>
+            <input name="memberPw" type="password" class="form-control" maxlength="50" id="member-pw" placeholder="비밀번호를 입력해주세요">
+            <span class="input-group-text text-center fw-bold">?</span>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text w-25 fw-bold">비밀번호 확인</span>

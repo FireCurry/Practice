@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -24,9 +26,11 @@ public class MemberEntity {
     private String memberPw;
 
     @Column(nullable = false)
+    @CreationTimestamp
     private LocalDateTime enrollDate;
 
     @Column(nullable = false, length = 1)
+    @ColumnDefault("'n'")
     private String deleteYn;
 
     @Builder
