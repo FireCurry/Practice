@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "member")
@@ -22,17 +22,17 @@ public class MemberEntity {
     private String memberPw;
 
     @Column(nullable = false)
-    private Date enrollDate;
+    private LocalDateTime enrollDate;
 
-    private Character deleteYn;
+    @Column(nullable = false, length = 1)
+    private String deleteYn;
 
     @Builder
-    public MemberEntity(String memberId, String memberPw, Date enrollDate, Character deleteYn) {
+    public MemberEntity(String memberId, String memberPw, LocalDateTime enrollDate, String deleteYn) {
         this.memberId = memberId;
         this.memberPw = memberPw;
         this.enrollDate = enrollDate;
         this.deleteYn = deleteYn;
-
     }
 
 }
