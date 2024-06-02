@@ -3,13 +3,13 @@ package com.kms.practice.config;
 import com.kms.practice.jwt.JwtUtil;
 import com.kms.practice.jwt.LoginFilter;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .formLogin((auth)->auth.disable())
                 .httpBasic((auth)->auth.disable())
                 .authorizeHttpRequests((auth)->auth
-                        .requestMatchers("/", "/favicon.io" ,"/member/signin","/member/idCheck", "/member/signup","/css/**","/img/**", "/js/**","/error").permitAll()
+                        .requestMatchers("/", "/login", "/favicon.io" ,"/member/signin","/member/idCheck", "/member/signup","/css/**","/img/**", "/js/**","/error").permitAll()
                         .anyRequest().authenticated())
                 .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil), UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement((session)->session
@@ -50,4 +50,5 @@ public class SecurityConfig {
         return http.build();
 
     }
+
 }
