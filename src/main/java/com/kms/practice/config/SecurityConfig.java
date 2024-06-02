@@ -1,5 +1,6 @@
 package com.kms.practice.config;
 
+import com.kms.practice.jwt.JwtUtil;
 import com.kms.practice.jwt.LoginFilter;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
@@ -20,6 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final AuthenticationConfiguration authenticationConfiguration;
+    private final JwtUtil jwtUtil;
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
@@ -41,7 +43,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((auth)->auth
                         .requestMatchers("/", "/favicon.io" ,"/member/signin","/member/idCheck", "/member/signup","/css/**","/img/**", "/js/**","/error").permitAll()
                         .anyRequest().authenticated())
-                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration)), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil), UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement((session)->session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
