@@ -7,4 +7,6 @@ public interface MemberService {
     long idCheck(String memberId);
 
     int signup(MemberDTO memberDTO);
+
+    int signin(MemberDTO memberDTO);
 }

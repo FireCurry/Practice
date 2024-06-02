@@ -19,6 +19,20 @@ public class MemberController {
         return "member/signin";
     }
 
+    @PostMapping("signin")
+    public String signin(@ModelAttribute MemberDTO memberDTO, RedirectAttributes ra) {
+
+        int result = memberService.signin(memberDTO);
+
+        if(result>0){
+            return "redirect:/";
+        } else {
+            ra.addFlashAttribute("message", "로그인에 실패하였습니다.");
+        }
+
+        return "redirect:signin";
+    }
+
     @GetMapping("signup")
     public String signup() {
         return "member/signup";
@@ -43,10 +57,5 @@ public class MemberController {
         return memberService.idCheck(memberId);
     }
 
-//    @PostMapping("signup")
-//    public String signup(@ModelAttribute Member member) {
-//        memberService.signup(member);
-//        return "redirect:/member/signin";
-//    }
 
 }
