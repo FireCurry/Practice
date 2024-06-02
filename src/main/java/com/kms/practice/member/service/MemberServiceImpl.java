@@ -47,7 +47,6 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public int signin(MemberDTO memberDTO) {
-        log.info(memberDTO.toString());
         Optional<MemberEntity> result = memberRepository.findByMemberId(memberDTO.getMemberId());
 
         if(result.isPresent()){
