@@ -12,7 +12,7 @@
 
 <main class="form-signup w-50 m-auto h-50">
     <form method="post" action="signup" id="signup-form">
-        <h1 class="h3 mb-3 fw-normal" style="user-select: none">Practice</h1>
+        <h1 class="h3 fw-bold mb-3" style="user-select: none">Practice</h1>
 
         <div class="input-group mb-3">
             <span class="input-group-text w-25 text-center fw-bold">아이디</span>
@@ -30,10 +30,13 @@
         </div>
 
         <div class="d-flex justify-content-end">
-            <button class="btn btn-primary w-25 py-2" type="submit">회원가입</button>
+            <button class="btn fw-bold btn-primary w-25 py-2" type="submit">회원가입</button>
         </div>
     </form>
-
+    <div class="position-fixed bottom-0 end-0 m-3">
+        <button class="btn btn-lg btn-primary fw-bold" onclick="history.back()">뒤로가기</button>
+        <a href="/" class="btn btn-lg btn-primary fw-bold ">홈</a>
+    </div>
 </main>
 <script src="/js/signup.js"></script>
 </body>

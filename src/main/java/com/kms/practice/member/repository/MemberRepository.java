@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     int countAllByMemberId(String memberId);
+    boolean existsByMemberId(String memberId);
 
     Optional<MemberEntity> findByMemberId(String memberId);
 }

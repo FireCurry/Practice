@@ -33,12 +33,11 @@ public class MemberServiceImpl implements MemberService{
                 .memberPw(bCryptPasswordEncoder.encode(memberDTO.getMemberPw()))
                 .enrollDate(null)
                 .deleteYn("n")
+                .role("'default'")
                 .build();
-        log.info(memberEntity.toString());
 
         int answer = 0;
         MemberEntity result = memberRepository.save(memberEntity);
-        log.info(result.toString());
 
             if(result.getMemberNo() > 0){
                 answer = 1;

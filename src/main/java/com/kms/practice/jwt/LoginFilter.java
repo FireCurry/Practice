@@ -1,5 +1,6 @@
 package com.kms.practice.jwt;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,22 +20,22 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) throws AuthenticationException {
 
-        String username = obtainUsername(req);
-        String password = obtainPassword(req);
+        String memberId = obtainUsername(req);
+        String memberPw = obtainPassword(req);
 
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(memberId, memberPw);
 
         return authenticationManager.authenticate(authToken);
     }
 
     @Override
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication authentication){
-
+        System.out.println("로그인 성공");
     }
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest req, HttpServletResponse res, AuthenticationException failed){
-
+        System.out.println("로그인 실패");
     }
 
 }

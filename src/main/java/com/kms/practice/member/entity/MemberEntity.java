@@ -33,12 +33,17 @@ public class MemberEntity {
     @ColumnDefault("'n'")
     private String deleteYn;
 
+    @Column(nullable = false)
+    @ColumnDefault("'member'")
+    private String role;
+
     @Builder
-    public MemberEntity(String memberId, String memberPw, LocalDateTime enrollDate, String deleteYn) {
+    public MemberEntity(String memberId, String memberPw, LocalDateTime enrollDate, String deleteYn, String role) {
         this.memberId = memberId;
         this.memberPw = memberPw;
         this.enrollDate = enrollDate;
         this.deleteYn = deleteYn;
+        this.role = role;
     }
 
 }

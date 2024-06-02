@@ -26,7 +26,6 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 
-
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -40,7 +39,7 @@ public class SecurityConfig {
                 .formLogin((auth)->auth.disable())
                 .httpBasic((auth)->auth.disable())
                 .authorizeHttpRequests((auth)->auth
-                        .requestMatchers("/member/signin", "/member/signup").permitAll()
+                        .requestMatchers("/", "/favicon.io" ,"/member/signin","/member/idCheck", "/member/signup","/css/**","/img/**", "/js/**","/error").permitAll()
                         .anyRequest().authenticated())
                 .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration)), UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement((session)->session
