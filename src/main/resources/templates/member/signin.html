@@ -13,7 +13,7 @@
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
 
 <main class="form-signin w-100 m-auto">
-  <form method="post" action="signin">
+  <form method="post" action="/login" id="signinForm">
     <h1 class="h3 mb-3 fw-bold" style="user-select: none">Practice</h1>
 
     <div class="form-floating">
@@ -38,6 +38,7 @@
     <button class="btn btn-lg btn-primary fw-bold" onclick="history.back()">뒤로가기</button>
     <a href="/" class="btn btn-lg btn-primary fw-bold ">홈</a>
   </div>
+  <script src="/js/signin.js"></script>
   <script th:inline="javascript">
     const message = /*[[${message}]]*/ "메시지";
 

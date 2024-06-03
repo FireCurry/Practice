@@ -29,25 +29,31 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         this.jwtUtil = jwtUtil;
 
 
-        setFilterProcessesUrl("/member/signin");
     }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) throws AuthenticationException {
 
         log.info("로그인 시도");
-        try {
-            MemberDTO memberDTO = new ObjectMapper().readValue(req.getInputStream(), MemberDTO.class);
-            String memberId = memberDTO.getMemberId();
-            String memberPw = memberDTO.getMemberPw();
-            log.info("memberId: " + memberId + ", memberPw: " + memberPw);
-            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(memberId, memberPw);
-            return authenticationManager.authenticate(authToken);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
+        // JSON 방식
+//        try {
+//            MemberDTO memberDTO = new ObjectMapper().readValue(req.getInputStream(), MemberDTO.class);
+//            String memberId = memberDTO.getMemberId();
+//            String memberPw = memberDTO.getMemberPw();
+//
+//            log.info("memberId: " + memberId + ", memberPw: " + memberPw);
+//            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(memberId, memberPw);
+//            return authenticationManager.authenticate(authToken);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
+        String memberId = req.getParameter("memberId");
+        String memberPw = req.getParameter("memberPw");
+
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(memberId, memberPw);
+        return authenticationManager.authenticate(authToken);
     }
 
     @Override

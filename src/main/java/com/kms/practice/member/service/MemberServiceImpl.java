@@ -33,7 +33,7 @@ public class MemberServiceImpl implements MemberService{
                 .memberPw(bCryptPasswordEncoder.encode(memberDTO.getMemberPw()))
                 .enrollDate(null)
                 .deleteYn("n")
-                .role("'default'")
+                .role("member")
                 .build();
 
         int answer = 0;
